@@ -132,6 +132,7 @@ public class TFCTags
         public static final TagKey<Item> STARTS_FIRES_WITH_ITEMS = create("starts_fires_with_items");
         public static final TagKey<Item> EXTINGUISHER = create("extinguisher");
         public static final TagKey<Item> LOG_PILE_LOGS = create("log_pile_logs");
+        public static final TagKey<Item> FIREWOOD_LOGS = create("firewood_logs");
         public static final TagKey<Item> PIT_KILN_STRAW = create("pit_kiln_straw");
         public static final TagKey<Item> PIT_KILN_LOGS = create("pit_kiln_logs");
         public static final TagKey<Item> CAN_BE_LIT_ON_TORCH = create("can_be_lit_on_torch");

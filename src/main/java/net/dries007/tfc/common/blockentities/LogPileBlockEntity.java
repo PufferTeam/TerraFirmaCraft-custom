@@ -98,7 +98,11 @@ public class LogPileBlockEntity extends InventoryBlockEntity<ItemStackHandler> i
     @Override
     public int getSlotStackLimit(int slot)
     {
-        return SLOTS;
+        if(Helpers.isItem(inventory.getStackInSlot(slot).getItem(), TFCTags.Items.FIREWOOD_LOGS)) {
+            return 16;
+        } else {
+            return 4;
+        }
     }
 
     @Override

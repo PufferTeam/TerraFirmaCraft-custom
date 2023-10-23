@@ -270,7 +270,14 @@ public abstract class AbstractFirepitBlockEntity<C extends IItemHandlerModifiabl
     public int getSlotStackLimit(int slot)
     {
         // Output slots can carry full stacks, the rest is individual
-        return (slot == FirepitBlockEntity.SLOT_OUTPUT_1 || slot == FirepitBlockEntity.SLOT_OUTPUT_2) ? 64 : 1;
+        if(slot == FirepitBlockEntity.SLOT_OUTPUT_1 || slot == FirepitBlockEntity.SLOT_OUTPUT_2) {
+            return 64;
+        } else if (Helpers.isItem(inventory.getStackInSlot(slot).getItem(), TFCTags.Items.FIREWOOD_LOGS)) {
+            return 4;
+        } else {
+            return 1;
+        }
+        //return (slot == FirepitBlockEntity.SLOT_OUTPUT_1 || slot == FirepitBlockEntity.SLOT_OUTPUT_2) ? 64 : 1;
     }
 
     @Override
@@ -304,7 +311,8 @@ public abstract class AbstractFirepitBlockEntity<C extends IItemHandlerModifiabl
         if (!fuelStack.isEmpty())
         {
             // Try and consume a piece of fuel
-            inventory.setStackInSlot(SLOT_FUEL_CONSUME, ItemStack.EMPTY);
+            //inventory.setStackInSlot(SLOT_FUEL_CONSUME, ItemStack.EMPTY);
+            fuelStack.shrink(1);
             needsSlotUpdate = true;
             Fuel fuel = Fuel.get(fuelStack);
             if (fuel != null)
